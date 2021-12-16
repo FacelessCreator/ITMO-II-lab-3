@@ -19,6 +19,7 @@ PREDICTING_COUNT = 50
 import tensorflow as tf
 
 LOSS = tf.keras.losses.MeanAbsoluteError()
+HIDDEN_LAYER_SIZE = 20
 ACTIVATION = tf.keras.activations.linear
 OPTIMIZER = tf.keras.optimizers.Adam(learning_rate=LEARNING_RATE)
 METRICS = 'mae'

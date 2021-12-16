@@ -8,6 +8,7 @@ import PIL
 import numpy as np
 import tensorflow as tf
 import matplotlib.pyplot as plt
+from sklearn.metrics import classification_report
 
 import local_functions
 import constants as consts
@@ -45,8 +46,13 @@ for objName in os.listdir(consts.FLOWERS_FOLDER):
         continue
     class_names.append(objName)
 
+print("\n___ TEST RESULTS ___\n")
+
+print(classification_report(real_class_ids, predicted_class_ids, target_names=class_names))
+
 local_functions.plot_confusion_matrix(real_class_ids, predicted_class_ids, class_names)
-print("Saving confusion plot")
-plt.savefig(consts.IMAGES_FOLDER+'/collisions.png')
+confusions_image_path = consts.IMAGES_FOLDER+'/collisions.png'
+print("Saving confusion plot to {}".format(confusions_image_path))
+plt.savefig(confusions_image_path)
 print("Confusion plot saved")
 plt.show()

@@ -9,6 +9,7 @@ tf.random.set_seed(consts.RANDOM_SEED)
 model = tf.keras.Sequential([
     tf.keras.layers.Rescaling(1./255),
     hub.KerasLayer(consts.MODULE_PATH, trainable=False),
+    tf.keras.layers.Dense(consts.HIDDEN_LAYER_SIZE, activation=consts.ACTIVATION),
     tf.keras.layers.Dense(consts.CLASSES_COUNT, activation=consts.ACTIVATION)
 ])
 

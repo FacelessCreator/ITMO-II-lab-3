@@ -28,7 +28,7 @@ train: build/model src/flowers
 build/images: build
 	mkdir -p build/images
 
-build/images/collisions.png: build/images scripts/test_model.py
+build/images/collisions.png: build/images scripts/test_model.py build/model
 	python scripts/test_model.py
 
 test: build/images/collisions.png
