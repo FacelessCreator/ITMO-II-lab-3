@@ -1,4 +1,7 @@
-.PHONY: prepare-pip prepare-pacman-nvidia destroy clear train test
+.PHONY: prepare-pip prepare-pacman-nvidia destroy clear all
+
+all: build/images
+	python main.py
 
 prepare-pip:
 	pip install numpy pandas matplotlib seaborn sklearn tensorflow tensorflow_hub
@@ -18,17 +21,5 @@ clear:
 destroy: clear
 	rm -rf env
 
-build/model: build scripts/create_model.py scripts/constants.py
-	mkdir -p build/model
-	python scripts/create_model.py
-
-train: build/model src/flowers
-	python scripts/train_model.py
-
 build/images: build
 	mkdir -p build/images
-
-build/images/collisions.png: build/images scripts/test_model.py build/model
-	python scripts/test_model.py
-
-test: build/images/collisions.png

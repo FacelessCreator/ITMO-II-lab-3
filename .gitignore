@@ -4,3 +4,5 @@ __pycache__
 env
 build
 src/flowers
+report.odt
+corrupted_scripts
